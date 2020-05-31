@@ -1,0 +1,22 @@
+{
+  "agent": "123",
+  "userErp": "123",
+  "text1": "123",
+  "text2": "123",
+  "procDefKey": "123",
+  "procDefName": "123",
+  "tenantId": "123",
+  "likeKey": "123",
+  "description": "123",
+  "delStatus": 0,
+  "sort": 1,
+  "remark": "123",
+  "creatorErp": "123",
+  "createdDate": 1559054890000,
+  "modifiedErp": "123",
+  "modifiedDate": 1559054890000,
+  "page": null,
+  "ids": null,
+  "startTime": 1559054890000,
+  "endTime": 1559054890000
+}

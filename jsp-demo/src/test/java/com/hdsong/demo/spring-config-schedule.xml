@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xmlns:task="http://www.springframework.org/schema/task" xmlns:beans="http://www.springframework.org/schema/c"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd http://www.springframework.org/schema/task http://www.springframework.org/schema/task/spring-task.xsd"
+       default-autowire="byName">
+
+    <!-- 配置处理定时任务的线程池 -->
+    <task:scheduler id="scheduler" pool-size="10" />
+    <!--  配置处理 异步定时任务的  线程池 -->
+    <beans:bean id="taskExecutor" class="org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor">
+        <!-- 核心线程数 -->
+        <beans:property name="corePoolSize" value="5" />
+        <!-- 最大线程数 -->
+        <beans:property name="maxPoolSize" value="10" />
+        <!-- 队列最大长度 -->
+        <beans:property name="queueCapacity" value="25" />
+        <!-- 线程池维护线程所允许的空闲时间，默认为60s -->
+        <beans:property name="keepAliveSeconds" value="300" />
+        <!-- 线程池对拒绝任务(无线程可用)的处理策略 ThreadPoolExecutor.CallerRunsPolicy策略 ,调用者的线程会执行该任务,如果执行器已关闭,则丢弃.  -->
+        <beans:property name="rejectedExecutionHandler">
+            <beans:bean class="java.util.concurrent.ThreadPoolExecutor$CallerRunsPolicy" />
+        </beans:property>
+    </beans:bean>
+
+    <!-- 注解式 -->
+    <task:annotation-driven executor="taskExecutor" proxy-target-class="true" scheduler="scheduler" />
+
+
+
+</beans>

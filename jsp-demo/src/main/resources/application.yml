@@ -1,0 +1,13 @@
+spring:
+  mvc:
+    view:
+      prefix: /
+      suffix: .jsp
+  http:
+    encoding:
+      enabled: true
+      force: true
+      charset: utf-8
+  profiles:
+    include: db
+

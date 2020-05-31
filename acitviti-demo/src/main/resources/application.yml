@@ -1,0 +1,23 @@
+spring:
+  activiti:
+    database-schema-update: true
+    check-process-definitions: false
+    history-level: full
+  datasource:
+    #    url: jdbc:mysql://172.25.4.205:3306/cloud_jwf?useUnicode=true&characterEncoding=utf-8&serverTimezone=GMT%2B8&nullCatalogMeansCurrent=true
+    #    username: m_cloud_jwf
+    #    password: XOGlLc
+    url: jdbc:mysql://192.168.116.10:3306/db_activiti?useUnicode=true&characterEncoding=utf-8&serverTimezone=GMT%2B8&nullCatalogMeansCurrent=true
+    username: root
+    password: 123456
+    driver-class-name: com.mysql.jdbc.Driver
+#pagehelper分页插件
+pagehelper:
+  helperDialect: mysql
+  reasonable: true
+  supportMethodsArguments: true
+  params: count=countSql
+logging:
+  level:
+    com.eric.activitidemo.mapper: DEBUG
+
